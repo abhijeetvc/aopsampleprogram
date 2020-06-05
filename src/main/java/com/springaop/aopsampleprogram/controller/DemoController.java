@@ -1,5 +1,6 @@
 package com.springaop.aopsampleprogram.controller;
 
+import com.springaop.aopsampleprogram.domain.Employee;
 import com.springaop.aopsampleprogram.impl.DemoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,5 +14,10 @@ public class DemoController {
     @GetMapping(value="/check")
     public String checkAop(){
         return demoImpl.doSomething();
+    }
+
+    @GetMapping(value="/emp")
+    public Employee getEmp(){
+        return demoImpl.getEmployee();
     }
 }

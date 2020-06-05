@@ -1,5 +1,6 @@
 package com.springaop.aopsampleprogram.aop;
 
+import com.springaop.aopsampleprogram.domain.Employee;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -25,6 +26,17 @@ public class DemoAop {
     @AfterReturning(pointcut = "execution(* com.springaop.aopsampleprogram.impl.DemoImpl.doSomething())",
     returning = "retValue")
     void checkAopImpl2(Object retValue){
+
         System.out.println("Printing value returned by doSomething: "+retValue);
+    }
+
+    @AfterReturning(pointcut = "execution(* com.springaop.aopsampleprogram.impl.DemoImpl.getEmployee())",
+            returning = "retValue")
+    void checkAopImpl3(Object retValue){
+        Employee e= (Employee) retValue;
+
+        System.out.println("Employee Id : "+e.getId());
+        System.out.println("Employee Name : "+e.getName());
+        System.out.println("Employee City : "+e.getCity());
     }
 }
